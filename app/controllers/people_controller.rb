@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
 
   private
 
-  def search_people
+  def filter_people
     @people = if params[:search].present?
       Person.search(params[:search])
     else
