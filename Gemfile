@@ -13,6 +13,7 @@ gem 'react-rails'
 gem 'sprockets-coffee-react'
 gem 'haml'
 gem 'js-routes'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug'
