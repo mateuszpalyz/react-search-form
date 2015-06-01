@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'react-rails'
 gem 'sprockets-coffee-react'
 gem 'haml'
+gem 'js-routes'
 
 group :development, :test do
   gem 'byebug'

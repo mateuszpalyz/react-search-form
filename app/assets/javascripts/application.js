@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
+//= require js-routes
 //= require_tree .
 //= require_tree ./react
