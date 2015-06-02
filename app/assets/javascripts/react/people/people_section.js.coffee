@@ -35,8 +35,11 @@
     console.error @props.url, status, err.toString()
 
   _handleOnSearchSubmit: (search) ->
-    @_fetchPeople
+    @state.fetchData=
       search: search
+      page: 1
+
+    @_fetchPeople()
 
   _handleOnPaginate: (pageNumber) ->
     @state.fetchData.page = pageNumber
