@@ -2,7 +2,16 @@ class PeopleController < ApplicationController
   before_filter :filter_people
 
   def index
-    render json: @people, root: false
+    render json: {
+      people: @people,
+      meta: {
+        current_page: @people.current_page,
+        next_page: @people.next_page,
+        prev_page: @people.prev_page,
+        total_pages: @people.total_pages,
+        total_count: @people.total_count
+      }
+    }
   end
 
   private
@@ -12,6 +21,6 @@ class PeopleController < ApplicationController
       Person.search(params[:search])
     else
       Person.all
-    end
+    end.page(params[:page])
   end
 end
