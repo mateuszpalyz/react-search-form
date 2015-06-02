@@ -15,7 +15,22 @@
       page: 1
 
   componentDidMount: ->
+    @_subscribeToEvents()
     @_fetchPeople({})
+
+  componentWillUnmount: ->
+    @_unsubscribeFromEvents()
+
+  _subscribeToEvents: ->
+    PubSub.subscribe 'resetButton:onClick', ()=>
+      @state.fetchData =
+        search: ''
+        page: 1
+
+      @_fetchPeople()
+
+  _unsubscribeFromEvents: ->
+    PubSub.unsubscribe 'resetButton:onClick'
 
   _fetchPeople: (data)->
     $.ajax
