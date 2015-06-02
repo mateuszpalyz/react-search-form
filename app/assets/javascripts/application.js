@@ -16,5 +16,6 @@
 //= require react
 //= require react_ujs
 //= require js-routes
+//= require pubsub
 //= require_tree .
 //= require_tree ./react
