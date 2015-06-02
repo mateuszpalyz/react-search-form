@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   before_filter :filter_people
 
   def index
-    render json: @people
+    render json: @people, root: false
   end
 
   private
