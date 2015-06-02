@@ -1,3 +1,7 @@
-Person.create({first_name: 'John', last_name: 'Doe', email: 'johndoe@example.com'})
-Person.create({first_name: 'Jack', last_name: 'Smith', email: 'jacksmith@example.com'})
-Person.create({first_name: 'Kate', last_name: 'Doe', email: 'katedoe@example.com'})
+include FFaker
+
+40.times do
+  first_name = Name.first_name
+  last_name = Name.last_name
+  Person.create({first_name: first_name, last_name: last_name, email: "#{first_name.downcase}#{last_name.downcase}@example.com"})
+end

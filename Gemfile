@@ -17,6 +17,7 @@ gem 'active_model_serializers'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'kaminari'
+gem 'ffaker'
 
 group :development, :test do
   gem 'byebug'
