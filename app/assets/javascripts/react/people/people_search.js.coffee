@@ -26,5 +26,6 @@
     <form onInput={@_handleOnSubmit}>
       <div className='form-group'>
         <input ref='search' className='form-control' placeholder='Search people by email...' type='text' />
+        <ResetButton text='Reset filter' />
       </div>
     </form>
