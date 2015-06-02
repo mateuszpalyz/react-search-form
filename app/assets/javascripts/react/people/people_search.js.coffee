@@ -3,6 +3,19 @@
 @PeopleSearch = React.createClass
   displayName: 'PeopleSearch'
 
+  componentDidMount: ->
+    @_subscribeToEvents()
+
+  componentWillUnmount: ->
+    @_unsubscribeFromEvents()
+
+  _subscribeToEvents: ->
+    PubSub.subscribe 'resetButton:onClick', ()=>
+      @refs.search.getDOMNode().value = ''
+
+  _unsubscribeFromEvents: ->
+    PubSub.unsubscribe 'resetButton:onClick'
+
   _handleOnSubmit: (e) ->
     e.preventDefault()
 
