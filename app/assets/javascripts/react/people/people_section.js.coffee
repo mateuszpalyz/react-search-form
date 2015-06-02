@@ -6,6 +6,13 @@
   getInitialState: ->
     didFetchData: false
     people: []
+    meta:
+      total_pages: 0
+      current_page: 1
+      total_count: 0
+    fetchData:
+      search: ''
+      page: 1
 
   componentDidMount: ->
     @_fetchPeople({})
@@ -14,7 +21,7 @@
     $.ajax
       url: Routes.people_path()
       dataType: 'json'
-      data: data
+      data: @state.fetchData
     .done @_fetchDataDone
     .fail @_fetchDataFail
 
@@ -22,6 +29,7 @@
     @setState
       didFetchData: true
       people: data.people
+      meta: data.meta
 
   _fetchDataFail: (xhr, status, err) =>
     console.error @props.url, status, err.toString()
@@ -29,6 +37,10 @@
   _handleOnSearchSubmit: (search) ->
     @_fetchPeople
       search: search
+
+  _handleOnPaginate: (pageNumber) ->
+    @state.fetchData.page = pageNumber
+    @_fetchPeople()
 
   render: ->
     cardsNode = @state.people.map (person) ->
@@ -43,6 +55,7 @@
       </div>
 
     <div>
+      <PaginatorSection totalPages={@state.meta.total_pages} currentPage={@state.meta.current_page} onPaginate={@_handleOnPaginate} />
       <PeopleSearch onFormSubmit={@_handleOnSearchSubmit}/>
       <div className="cards-wrapper">
         {
